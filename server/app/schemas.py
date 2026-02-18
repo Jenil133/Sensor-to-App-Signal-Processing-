@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from pydantic import (AwareDatetime, BaseModel, ConfigDict, EmailStr, Field,
                       field_validator)
@@ -79,3 +79,36 @@ class IngestOut(BaseModel):
 class SamplePoint(BaseModel):
     ts: datetime
     value: float
+
+
+class DailyPoint(BaseModel):
+    day: date
+    value: float
+    z: float | None
+    baseline_center: float | None
+    baseline_spread: float | None
+
+
+class AnomalyOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    metric: str | None
+    detector: str
+    severity: str
+    score: float
+    started_at: date
+    ended_at: date | None
+    status: str
+    details: dict
+    created_at: datetime
+
+
+class AnomalyAckOut(BaseModel):
+    id: str
+    status: str
+
+
+class PipelineRunOut(BaseModel):
+    clean_rows: int
+    daily_rows: int
+    events_created: int

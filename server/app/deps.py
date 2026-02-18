@@ -11,7 +11,11 @@ from app.security import decode_access_token, hash_device_token
 
 
 def get_current_user(db: Session = Depends(get_db),
-                     authorization: str = Header(...)) -> User:
+                     authorization: str | None = Header(None)) -> User:
+    # Optional header + manual 401 (not FastAPI's 422 for a missing required
+    # header): the frontend treats 401 as "clear token, go to /login".
+    if authorization is None:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
     scheme, _, token = authorization.partition(" ")
     if scheme.lower() != "bearer" or not token:
         raise HTTPException(status_code=401, detail="Invalid or expired token")
@@ -26,7 +30,9 @@ def get_current_user(db: Session = Depends(get_db),
 
 
 def get_current_device(db: Session = Depends(get_db),
-                       x_device_token: str = Header(alias="X-Device-Token")) -> Device:
+                       x_device_token: str | None = Header(None, alias="X-Device-Token")) -> Device:
+    if x_device_token is None:
+        raise HTTPException(status_code=401, detail="Invalid device token")
     device = db.execute(
         select(Device).where(Device.token_hash == hash_device_token(x_device_token))
     ).scalar_one_or_none()

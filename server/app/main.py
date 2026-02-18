@@ -5,7 +5,7 @@ from sqlalchemy import text
 
 from app.config import settings
 from app.database import engine
-from app.routers import auth, devices, ingest, metrics
+from app.routers import anomalies, auth, devices, ingest, metrics, pipeline
 
 app = FastAPI(title="Baseline API")
 
@@ -21,6 +21,8 @@ app.include_router(auth.router)
 app.include_router(devices.router)
 app.include_router(ingest.router)
 app.include_router(metrics.router)
+app.include_router(anomalies.router)
+app.include_router(pipeline.router)
 
 
 @app.get("/api/v1/health")
