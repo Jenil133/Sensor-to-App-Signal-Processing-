@@ -17,11 +17,14 @@ from sqlalchemy.pool import StaticPool
 from app.database import get_db
 from app.main import app
 from app.models import Base
+from app.processing import jobs
 
 engine = create_engine("sqlite://", poolclass=StaticPool,
                        connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 Base.metadata.create_all(engine)  # tests bypass Alembic intentionally
+
+jobs.session_factory = TestingSessionLocal  # pipeline runs against the test DB
 
 
 def _override_get_db():

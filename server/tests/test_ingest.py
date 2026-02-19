@@ -102,6 +102,11 @@ def test_bad_device_token_rejected(client):
     assert resp.status_code == 401
 
 
+def test_missing_device_token_header_is_401(client):
+    make_user_device(client)
+    assert client.post("/api/v1/ingest", json=batch(FIVE_SAMPLES)).status_code == 401
+
+
 def test_dedupe_across_timezone_offsets(client):
     # Same instant sent with a +05:30 offset must dedupe against the stored UTC row
     _, device_token = make_user_device(client)

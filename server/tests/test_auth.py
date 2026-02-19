@@ -59,3 +59,9 @@ def test_login_oversized_password_is_401_not_500(client):
     # (a 500 only for registered emails would be a user-enumeration oracle)
     register(client)
     assert login(client, password="x" * 100).status_code == 401
+
+
+def test_me_with_no_header_at_all_is_401(client):
+    # 401, not FastAPI's 422 missing-header error — the frontend keys its
+    # "clear token and redirect" behavior on 401
+    assert client.get("/api/v1/me").status_code == 401
