@@ -1,0 +1,171 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #8884;
+  margin-bottom: 1.5rem;
+}
+
+.topnav .brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.topnav a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.topnav a:hover {
+  opacity: 1;
+}
+
+.linklike {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  opacity: 0.7;
+  margin-left: auto;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  border: 1px solid #8883;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.empty-note {
+  opacity: 0.6;
+  font-size: 0.9rem;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.auth-box {
+  max-width: 360px;
+  margin: 12vh auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-box input,
+.auth-box button,
+.device-form input,
+.device-form button,
+.ack-btn {
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #8886;
+  font: inherit;
+}
+
+.auth-box button,
+.device-form button {
+  cursor: pointer;
+}
+
+.error-note {
+  color: #d33;
+  font-size: 0.85rem;
+}
+
+.feed-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #8882;
+  font-size: 0.9rem;
+}
+
+.sev {
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sev-med {
+  background: #f0ad4e33;
+  color: #b8860b;
+}
+
+.sev-high {
+  background: #d9534f33;
+  color: #d9534f;
+}
+
+.sev-low {
+  background: #5bc0de33;
+  color: #31708f;
+}
+
+.ack-btn {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.token-reveal {
+  background: #8881;
+  border: 1px dashed #8886;
+  border-radius: 8px;
+  padding: 0.9rem;
+  margin: 1rem 0;
+  overflow-wrap: anywhere;
+}
+
+.token-reveal code {
+  user-select: all;
+}
+
+.device-form {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+table.devices {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.devices td,
+table.devices th {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid #8882;
+  font-size: 0.9rem;
+}
