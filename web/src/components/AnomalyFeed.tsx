@@ -6,6 +6,15 @@ interface Props {
   onChanged: () => void
 }
 
+const SEV_ICON: Record<string, string> = { low: '●', med: '▲', high: '■' }
+
+const DETECTOR_LABEL: Record<string, string> = {
+  zscore: 'Z-score',
+  cusum: 'CUSUM',
+  isolation_forest: 'Isolation Forest',
+  autoencoder: 'Autoencoder',
+}
+
 export default function AnomalyFeed({ anomalies, onChanged }: Props) {
   async function ack(id: string) {
     await api(`/anomalies/${id}/ack`, { method: 'POST' })
@@ -20,11 +29,19 @@ export default function AnomalyFeed({ anomalies, onChanged }: Props) {
       ) : (
         anomalies.map((a) => (
           <div className="feed-item" key={a.id}>
-            <span className={`sev sev-${a.severity}`}>{a.severity}</span>
-            <span>{a.detector}</span>
-            <span>{a.metric ?? 'multivariate'}</span>
-            <span>from {a.started_at}</span>
-            <span>({a.status})</span>
+            <span className={`sev sev-${a.severity}`}>
+              <span aria-hidden>{SEV_ICON[a.severity] ?? '●'}</span>
+              {a.severity}
+            </span>
+            <span className="feed-detector">
+              {DETECTOR_LABEL[a.detector] ?? a.detector}
+            </span>
+            <span className="feed-metric">{a.metric ?? 'multivariate'}</span>
+            <span className="feed-when">
+              {a.started_at}
+              {a.ended_at ? ` → ${a.ended_at}` : ''}
+            </span>
+            <span className="feed-status">{a.status}</span>
             {a.status === 'open' && (
               <button className="ack-btn" onClick={() => ack(a.id)}>
                 Acknowledge

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
 import { AuthProvider, useAuth } from './auth/AuthContext'
 import Dashboard from './pages/Dashboard'
 import Devices from './pages/Devices'
@@ -12,9 +12,14 @@ function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="shell">
       <nav className="topnav">
-        <span className="brand">Baseline</span>
-        <Link to="/">Dashboard</Link>
-        <Link to="/devices">Devices</Link>
+        <span className="brand">
+          <span className="brand-pulse" />
+          Baseline
+        </span>
+        <NavLink to="/" end>
+          Dashboard
+        </NavLink>
+        <NavLink to="/devices">Devices</NavLink>
         <button className="linklike" onClick={logout}>
           Log out
         </button>

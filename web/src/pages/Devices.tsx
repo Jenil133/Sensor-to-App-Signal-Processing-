@@ -39,7 +39,7 @@ export default function Devices() {
 
   return (
     <div>
-      <h2>Devices</h2>
+      <h1 className="page-title">Devices</h1>
       <form className="device-form" onSubmit={create}>
         <input
           placeholder="device name"
@@ -48,13 +48,17 @@ export default function Devices() {
           maxLength={80}
           required
         />
-        <button type="submit">Create device</button>
+        <button className="btn-primary" type="submit">
+          Create device
+        </button>
       </form>
       {error && <div className="error-note">{error}</div>}
       {revealed && (
         <div className="token-reveal">
-          <strong>{revealed.name}</strong> token — shown only once, copy it now:
-          <br />
+          <div className="token-warn">
+            <span aria-hidden>⚠</span>
+            {revealed.name} token — shown only once, copy it now
+          </div>
           <code>{revealed.device_token}</code>
           <br />
           <br />
@@ -67,24 +71,30 @@ export default function Devices() {
           </code>
         </div>
       )}
-      <table className="devices">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Created</th>
-            <th>Last seen</th>
-          </tr>
-        </thead>
-        <tbody>
-          {devices.map((d) => (
-            <tr key={d.id}>
-              <td>{d.name}</td>
-              <td>{d.created_at.slice(0, 10)}</td>
-              <td>{d.last_seen_at ? d.last_seen_at.replace('T', ' ').slice(0, 16) : 'never'}</td>
+      <div className="card">
+        <table className="devices">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Created</th>
+              <th>Last seen</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {devices.map((d) => (
+              <tr key={d.id}>
+                <td>{d.name}</td>
+                <td>{d.created_at.slice(0, 10)}</td>
+                <td>
+                  {d.last_seen_at
+                    ? d.last_seen_at.replace('T', ' ').slice(0, 16)
+                    : 'never'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

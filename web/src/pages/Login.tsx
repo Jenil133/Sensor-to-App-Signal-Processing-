@@ -28,34 +28,40 @@ export default function Login() {
   }
 
   return (
-    <form className="auth-box" onSubmit={submit}>
-      <h2>Baseline — {mode === 'login' ? 'Log in' : 'Create account'}</h2>
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="password (min 8 chars)"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        minLength={8}
-        required
-      />
-      {error && <div className="error-note">{error}</div>}
-      <button type="submit" disabled={busy}>
-        {mode === 'login' ? 'Log in' : 'Register'}
-      </button>
-      <button
-        type="button"
-        className="linklike"
-        onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
-      >
-        {mode === 'login' ? 'Need an account? Register' : 'Have an account? Log in'}
-      </button>
-    </form>
+    <div className="auth-wrap">
+      <form className="auth-box" onSubmit={submit}>
+        <div className="brand">
+          <span className="brand-pulse" />
+          Baseline
+        </div>
+        <h2>{mode === 'login' ? 'Welcome back' : 'Create your account'}</h2>
+        <input
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="password (min 8 chars)"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          minLength={8}
+          required
+        />
+        {error && <div className="error-note">{error}</div>}
+        <button className="btn-primary" type="submit" disabled={busy}>
+          {mode === 'login' ? 'Log in' : 'Register'}
+        </button>
+        <button
+          type="button"
+          className="linklike"
+          onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
+        >
+          {mode === 'login' ? 'Need an account? Register' : 'Have an account? Log in'}
+        </button>
+      </form>
+    </div>
   )
 }
