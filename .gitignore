@@ -7,3 +7,4 @@ dist/
 *.db
 .pytest_cache/
 .DS_Store
+models_store/

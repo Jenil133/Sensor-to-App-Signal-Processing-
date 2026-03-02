@@ -8,6 +8,10 @@ class Settings(BaseSettings):
     jwt_expires_min: int = 60
     payload_enc_key: str  # REQUIRED: Fernet key; app must fail fast if missing
     cors_origins: str = "http://localhost:5173"
+    enable_autoencoder: bool = False
+    models_dir: str = "./models_store"
+    log_level: str = "INFO"
+    rate_limits_enabled: bool = True  # disable only for local bulk backfills
 
 
 settings = Settings()
