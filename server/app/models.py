@@ -107,6 +107,20 @@ class BaselineRow(Base):
     __table_args__ = (UniqueConstraint("user_id", "metric", "as_of_day", name="uq_baseline"),)
 
 
+class ModelArtifact(Base):
+    """One trained per-user autoencoder checkpoint. Weights live on disk under
+    MODELS_DIR/{user_id}/ae_v{version}.pt; this row is the registry + threshold."""
+    __tablename__ = "model_artifacts"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    user_id: Mapped[str] = mapped_column(String(36), ForeignKey("users.id"), nullable=False)
+    detector: Mapped[str] = mapped_column(String(32), default="autoencoder")
+    version: Mapped[int] = mapped_column(Integer, nullable=False)
+    path: Mapped[str] = mapped_column(String(255), nullable=False)
+    trained_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
+    metrics: Mapped[dict] = mapped_column(JSON, default=dict)  # {"train_mse","threshold","n_windows"}
+    __table_args__ = (UniqueConstraint("user_id", "detector", "version", name="uq_model_version"),)
+
+
 class AnomalyEvent(Base):
     __tablename__ = "anomaly_events"
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
