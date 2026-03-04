@@ -112,3 +112,10 @@ class PipelineRunOut(BaseModel):
     clean_rows: int
     daily_rows: int
     events_created: int
+
+
+class TrainOut(BaseModel):
+    version: int
+    n_windows: int
+    train_mse: float
+    threshold: float
