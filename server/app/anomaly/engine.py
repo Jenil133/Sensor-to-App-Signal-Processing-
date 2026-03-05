@@ -1,3 +1,4 @@
+import logging
 from datetime import date, timedelta
 
 import pandas as pd
@@ -6,9 +7,12 @@ from sqlalchemy.orm import Session
 
 from app.anomaly.cusum import cusum_alarms
 from app.anomaly.isoforest import isoforest_flags
+from app.config import settings
 from app.constants import (CUSUM_H, CUSUM_K, DERIVED_METRICS,
                            ISOFOREST_TRAIN_DAYS, ZSCORE_HIGH, ZSCORE_MED)
-from app.models import AnomalyEvent, DailyMetric
+from app.models import AnomalyEvent, DailyMetric, ModelArtifact
+
+logger = logging.getLogger(__name__)
 
 DETECTOR_LOOKBACK_DAYS = 60
 QUIET_DAYS_TO_RESOLVE = 2
@@ -156,4 +160,41 @@ def run_detectors(db: Session, user_id: str) -> int:
         details=({"top_feature": last_flag["top_feature"],
                   "score": round(last_flag["score"], 4)} if last_flag else {}),
         last_fire_day=last_flag["day"] if last_flag else None)
+
+    # autoencoder (detector #4, flag-gated): reconstruction error of the
+    # latest 7-day window vs the user's trained threshold
+    if settings.enable_autoencoder:
+        created += _run_autoencoder(db, user_id, feature_df, latest_day)
     return created
+
+
+def _run_autoencoder(db: Session, user_id: str, feature_df: pd.DataFrame,
+                     latest_day: date) -> int:
+    artifact = db.execute(
+        select(ModelArtifact)
+        .where(ModelArtifact.user_id == user_id,
+               ModelArtifact.detector == "autoencoder")
+        .order_by(ModelArtifact.version.desc()).limit(1)
+    ).scalar_one_or_none()
+    if artifact is None:
+        return 0
+    complete = feature_df.dropna().reindex(sorted(feature_df.columns), axis=1)
+    if len(complete) < 7:
+        return 0
+    try:
+        from app.anomaly import autoencoder
+        model = autoencoder.load_checkpoint(artifact.path)
+        score = autoencoder.score_latest(model, complete.to_numpy(dtype="float64"))
+    except Exception as exc:  # missing wheel, missing file, corrupt checkpoint
+        logger.warning("autoencoder skipped for user %s: %s", user_id, exc)
+        return 0
+    threshold = float(artifact.metrics.get("threshold", float("inf")))
+    firing = score > threshold
+    return _apply_lifecycle(
+        db, user_id, "autoencoder", None, firing,
+        started_at=latest_day if firing else None,
+        score=score,
+        severity="high" if score > 2 * threshold else "med",
+        details={"threshold": round(threshold, 4), "version": artifact.version,
+                 "score": round(score, 4)},
+        last_fire_day=latest_day)
