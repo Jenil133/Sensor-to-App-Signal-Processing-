@@ -1,9 +1,10 @@
-from fastapi import APIRouter, BackgroundTasks, Depends
+from fastapi import APIRouter, BackgroundTasks, Depends, Request
 from sqlalchemy.orm import Session
 
 from app.crypto import canonical_bytes, encrypt, sha256_hex
 from app.database import get_db
 from app.deps import get_current_device
+from app.limits import limiter
 from app.models import Device, RawPayload
 from app.processing.intake import process_payload
 from app.processing.jobs import run_pipeline_background
@@ -13,7 +14,8 @@ router = APIRouter(prefix="/api/v1", tags=["ingest"])
 
 
 @router.post("/ingest", status_code=202, response_model=IngestOut)
-def ingest(body: IngestIn, background: BackgroundTasks,
+@limiter.limit("120/minute")
+def ingest(request: Request, body: IngestIn, background: BackgroundTasks,
            db: Session = Depends(get_db),
            device: Device = Depends(get_current_device)):
     plaintext = canonical_bytes(body.model_dump(mode="json"))

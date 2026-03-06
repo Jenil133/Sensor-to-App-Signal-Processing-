@@ -26,6 +26,8 @@ Base.metadata.create_all(engine)  # tests bypass Alembic intentionally
 
 jobs.session_factory = TestingSessionLocal  # pipeline runs against the test DB
 
+app.state.limiter.enabled = False  # rate limits are checked manually, not in the suite
+
 
 def _override_get_db():
     db = TestingSessionLocal()
