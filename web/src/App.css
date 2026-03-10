@@ -445,3 +445,10 @@ table.devices tr:last-child td {
 .section-gap {
   margin-top: 1.25rem;
 }
+
+.sim-blurb {
+  color: var(--ink-2);
+  font-size: 0.92rem;
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+}

@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-do
 import { AuthProvider, useAuth } from './auth/AuthContext'
 import Dashboard from './pages/Dashboard'
 import Devices from './pages/Devices'
+import DeviceSim from './pages/DeviceSim'
 import Login from './pages/Login'
 import './App.css'
 
@@ -20,6 +21,7 @@ function Shell({ children }: { children: ReactNode }) {
           Dashboard
         </NavLink>
         <NavLink to="/devices">Devices</NavLink>
+        <NavLink to="/device-sim">Demo Device</NavLink>
         <button className="linklike" onClick={logout}>
           Log out
         </button>
@@ -48,6 +50,14 @@ export default function App() {
             element={
               <Shell>
                 <Devices />
+              </Shell>
+            }
+          />
+          <Route
+            path="/device-sim"
+            element={
+              <Shell>
+                <DeviceSim />
               </Shell>
             }
           />
