@@ -1,4 +1,4 @@
-from fastapi import APIRouter, BackgroundTasks, Depends, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, Request, Response
 from sqlalchemy.orm import Session
 
 from app.crypto import canonical_bytes, encrypt, sha256_hex
@@ -15,7 +15,8 @@ router = APIRouter(prefix="/api/v1", tags=["ingest"])
 
 @router.post("/ingest", status_code=202, response_model=IngestOut)
 @limiter.limit("120/minute")
-def ingest(request: Request, body: IngestIn, background: BackgroundTasks,
+def ingest(request: Request, response: Response, body: IngestIn,
+           background: BackgroundTasks,
            db: Session = Depends(get_db),
            device: Device = Depends(get_current_device)):
     plaintext = canonical_bytes(body.model_dump(mode="json"))
