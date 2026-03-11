@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
-import { BrowserRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Navigate, NavLink, Route, Routes } from 'react-router-dom'
+import { DEMO } from './api/demo'
 import { AuthProvider, useAuth } from './auth/AuthContext'
 import Dashboard from './pages/Dashboard'
 import Devices from './pages/Devices'
@@ -31,10 +32,13 @@ function Shell({ children }: { children: ReactNode }) {
   )
 }
 
+// HashRouter on the static demo host (GitHub Pages has no SPA rewrites)
+const Router = DEMO ? HashRouter : BrowserRouter
+
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route
@@ -62,7 +66,7 @@ export default function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </AuthProvider>
   )
 }

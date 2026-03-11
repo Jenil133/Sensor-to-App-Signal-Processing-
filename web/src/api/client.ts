@@ -1,9 +1,12 @@
+import { DEMO, demoApi } from './demo'
+
 const TOKEN_KEY = 'baseline_jwt'
 export const getToken = () => localStorage.getItem(TOKEN_KEY)
 export const setToken = (t: string | null) =>
   t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY)
 
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
+  if (DEMO) return demoApi<T>(path, init)
   const headers: Record<string, string> = {
     'content-type': 'application/json',
     ...(init.headers as Record<string, string> | undefined),

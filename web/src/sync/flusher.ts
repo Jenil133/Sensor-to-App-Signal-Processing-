@@ -1,3 +1,4 @@
+import { DEMO } from '../api/demo'
 import { peekAll, remove } from './queue'
 
 export interface DrainReport {
@@ -23,6 +24,14 @@ export async function drain(): Promise<void> {
   const report: DrainReport = { sent: 0, dropped: 0, lastError: null }
   try {
     const items = await peekAll() // oldest first (autoincrement key order)
+    if (DEMO) {
+      // no backend on the demo link: accept every batch locally
+      for (const item of items) {
+        await remove(item.id!)
+        report.sent += 1
+      }
+      return
+    }
     for (const item of items) {
       let res: Response
       try {

@@ -1,0 +1,1015 @@
+{
+ "me": {
+  "id": "85a64a98-e188-4cac-a1b9-d41527c833ea",
+  "email": "demo@example.com"
+ },
+ "devices": [
+  {
+   "id": "8af6286f-e56f-4e5a-a24b-1ccea95e5ba3",
+   "name": "Demo Watch",
+   "created_at": "2026-08-10T00:48:29.700175",
+   "last_seen_at": "2026-08-10T06:36:08.377264"
+  },
+  {
+   "id": "19548b30-92ad-4dc0-a828-d63760904335",
+   "name": "Browser Sim",
+   "created_at": "2026-08-10T01:54:00.802527",
+   "last_seen_at": "2026-08-10T06:55:19.289392"
+  }
+ ],
+ "anomalies": [
+  {
+   "id": "39cb612b-aef6-4879-b2b9-99f4925d4f17",
+   "metric": null,
+   "detector": "isolation_forest",
+   "severity": "med",
+   "score": 0.024518492371662814,
+   "started_at": "2026-08-04",
+   "ended_at": "2026-08-03",
+   "status": "resolved",
+   "details": {
+    "top_feature": "resting_hr",
+    "score": -0.0245
+   },
+   "created_at": "2026-08-10T00:49:44.769561"
+  },
+  {
+   "id": "5cb8697e-e8d6-460f-8261-275b145ffd78",
+   "metric": "hrv_night",
+   "detector": "cusum",
+   "severity": "med",
+   "score": 6.94,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "acked",
+   "details": {
+    "direction": "-",
+    "statistic": 6.94,
+    "k": 0.5,
+    "h": 5.0
+   },
+   "created_at": "2026-08-10T00:49:24.589172"
+  },
+  {
+   "id": "e8fd36f6-62f5-4c2f-9be0-2cbb685aa708",
+   "metric": "resting_hr",
+   "detector": "cusum",
+   "severity": "med",
+   "score": 5.58,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "direction": "+",
+    "statistic": 5.58,
+    "k": 0.5,
+    "h": 5.0
+   },
+   "created_at": "2026-08-10T00:49:17.112141"
+  },
+  {
+   "id": "324d9b02-d934-4598-a0d1-a5487f147387",
+   "metric": "resting_hr",
+   "detector": "zscore",
+   "severity": "high",
+   "score": 6.079114676222623,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "z": 6.08,
+    "threshold": 3.0
+   },
+   "created_at": "2026-08-10T00:49:17.111846"
+  },
+  {
+   "id": "e7a5d6a4-3b5f-496c-9fd0-ddc7da7af230",
+   "metric": "skin_temp_night",
+   "detector": "cusum",
+   "severity": "med",
+   "score": 5.51,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "direction": "+",
+    "statistic": 5.51,
+    "k": 0.5,
+    "h": 5.0
+   },
+   "created_at": "2026-08-10T00:49:13.465723"
+  },
+  {
+   "id": "ae63dc00-31bb-4f14-b6b9-27c547e07718",
+   "metric": "skin_temp_night",
+   "detector": "zscore",
+   "severity": "high",
+   "score": 6.011986812199268,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "z": 6.01,
+    "threshold": 3.0
+   },
+   "created_at": "2026-08-10T00:49:13.465442"
+  },
+  {
+   "id": "0bdb04ce-2213-44f0-81ac-c3cdf5de626c",
+   "metric": "hrv_night",
+   "detector": "zscore",
+   "severity": "med",
+   "score": 3.7440046296296265,
+   "started_at": "2026-08-01",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "z": -3.74,
+    "threshold": 3.0
+   },
+   "created_at": "2026-08-10T00:49:13.465011"
+  },
+  {
+   "id": "ba8b4896-1882-4487-96d1-409b846fe9bf",
+   "metric": "motion_total",
+   "detector": "cusum",
+   "severity": "high",
+   "score": 12.28,
+   "started_at": "2026-07-16",
+   "ended_at": null,
+   "status": "open",
+   "details": {
+    "direction": "-",
+    "statistic": 12.28,
+    "k": 0.5,
+    "h": 5.0
+   },
+   "created_at": "2026-08-10T00:48:41.007049"
+  },
+  {
+   "id": "e6900b36-d7be-4825-b0f0-142520293db9",
+   "metric": "motion_total",
+   "detector": "zscore",
+   "severity": "med",
+   "score": 3.6832015700736696,
+   "started_at": "2026-07-16",
+   "ended_at": null,
+   "status": "acked",
+   "details": {
+    "z": -3.68,
+    "threshold": 3.0
+   },
+   "created_at": "2026-08-10T00:48:41.006709"
+  }
+ ],
+ "daily": {
+  "resting_hr": [
+   {
+    "day": "2026-07-08",
+    "value": 58.2195539142023,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-09",
+    "value": 58.30131436447369,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-10",
+    "value": 58.19648073436099,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-11",
+    "value": 58.0850655687514,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-12",
+    "value": 58.11651358767593,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-13",
+    "value": 57.94851568136544,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-14",
+    "value": 58.23535962497704,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-15",
+    "value": 58.2626804963836,
+    "z": 0.06619976202261313,
+    "baseline_center": 58.19648073436099,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-16",
+    "value": 58.15197990183616,
+    "z": -0.05603742244548471,
+    "baseline_center": 58.20801732428164,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-17",
+    "value": 58.13416220125249,
+    "z": -0.06231853310850255,
+    "baseline_center": 58.19648073436099,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-18",
+    "value": 58.289837151167575,
+    "z": 0.11560683306900188,
+    "baseline_center": 58.17423031809857,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-19",
+    "value": 58.52645310244673,
+    "z": 0.32997236808574115,
+    "baseline_center": 58.19648073436099,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-20",
+    "value": 58.11004044115493,
+    "z": -0.09797688312671227,
+    "baseline_center": 58.20801732428164,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-21",
+    "value": 58.40169136183488,
+    "z": 0.20521062747388896,
+    "baseline_center": 58.19648073436099,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-22",
+    "value": 58.15873158274989,
+    "z": -0.04928574153175447,
+    "baseline_center": 58.20801732428164,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-23",
+    "value": 58.22619052815468,
+    "z": 0.04858436959924717,
+    "baseline_center": 58.177606158555434,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-24",
+    "value": 58.29848106217457,
+    "z": 0.12087490361913211,
+    "baseline_center": 58.177606158555434,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-25",
+    "value": 58.31303629077047,
+    "z": 0.12057523531818504,
+    "baseline_center": 58.192461055452284,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-26",
+    "value": 58.182249190372076,
+    "z": -0.048525886193786505,
+    "baseline_center": 58.23077507656586,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-27",
+    "value": 58.345362805821665,
+    "z": 0.11458772925580263,
+    "baseline_center": 58.23077507656586,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-28",
+    "value": 58.213560376423324,
+    "z": -0.03545968425699897,
+    "baseline_center": 58.24902006068032,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-29",
+    "value": 58.3298975888909,
+    "z": 0.08546207662175931,
+    "baseline_center": 58.24443551226914,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-30",
+    "value": 58.45300340004924,
+    "z": 0.19498956038810888,
+    "baseline_center": 58.25801383966113,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-07-31",
+    "value": 58.26209074265717,
+    "z": -0.03206836401390234,
+    "baseline_center": 58.294159106671074,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-01",
+    "value": 63.79957545062215,
+    "z": 5.505416343951076,
+    "baseline_center": 58.294159106671074,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-02",
+    "value": 64.17191477090368,
+    "z": 5.866156094431162,
+    "baseline_center": 58.30575867647252,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-03",
+    "value": 64.19193918869628,
+    "z": 5.88618051222376,
+    "baseline_center": 58.30575867647252,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-04",
+    "value": 64.67773012691865,
+    "z": 6.356263187087961,
+    "baseline_center": 58.321466939830685,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-05",
+    "value": 64.42353817509441,
+    "z": 6.102071235263722,
+    "baseline_center": 58.321466939830685,
+    "baseline_spread": 1.0
+   },
+   {
+    "day": "2026-08-06",
+    "value": 64.4167448735789,
+    "z": 6.079114676222623,
+    "baseline_center": 58.33763019735628,
+    "baseline_spread": 1.0
+   }
+  ],
+  "hrv_night": [
+   {
+    "day": "2026-07-08",
+    "value": 52.734861111111094,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-09",
+    "value": 52.345,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-10",
+    "value": 53.48472222222223,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-11",
+    "value": 55.36027777777778,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-12",
+    "value": 51.912499999999994,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-13",
+    "value": 54.80208333333334,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-14",
+    "value": 54.59319444444444,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-15",
+    "value": 54.12972222222223,
+    "z": 0.21499999999999866,
+    "baseline_center": 53.48472222222223,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-16",
+    "value": 53.761666666666656,
+    "z": -0.015185185185191111,
+    "baseline_center": 53.80722222222223,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-17",
+    "value": 54.365138888888886,
+    "z": 0.20115740740740998,
+    "baseline_center": 53.761666666666656,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-18",
+    "value": 54.07486111111112,
+    "z": 0.04305555555555903,
+    "baseline_center": 53.94569444444444,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-19",
+    "value": 53.23527777777778,
+    "z": -0.2798611111111124,
+    "baseline_center": 54.07486111111112,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-20",
+    "value": 53.61930555555554,
+    "z": -0.09965277777778188,
+    "baseline_center": 53.91826388888889,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-21",
+    "value": 54.70166666666667,
+    "z": 0.3133333333333373,
+    "baseline_center": 53.761666666666656,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-22",
+    "value": 54.218333333333305,
+    "z": 0.10002314814813928,
+    "baseline_center": 53.91826388888889,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-23",
+    "value": 53.30944444444444,
+    "z": -0.26428240740741177,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-24",
+    "value": 54.660416666666684,
+    "z": 0.18604166666667035,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-25",
+    "value": 53.97902777777777,
+    "z": -0.06499999999999773,
+    "baseline_center": 54.174027777777766,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-26",
+    "value": 53.56680555555557,
+    "z": -0.1784953703703683,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-27",
+    "value": 54.71333333333334,
+    "z": 0.20368055555555506,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-28",
+    "value": 54.1351388888889,
+    "z": 0.010949074074076748,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-29",
+    "value": 55.15347222222223,
+    "z": 0.350393518518518,
+    "baseline_center": 54.10229166666667,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-30",
+    "value": 53.59152777777777,
+    "z": -0.1711574074074136,
+    "baseline_center": 54.10500000000001,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-07-31",
+    "value": 52.8361111111111,
+    "z": -0.42296296296296987,
+    "baseline_center": 54.10500000000001,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-01",
+    "value": 42.18541666666668,
+    "z": -3.947175925925921,
+    "baseline_center": 54.026944444444446,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-02",
+    "value": 42.84624999999999,
+    "z": -3.6509722222222223,
+    "baseline_center": 53.79916666666666,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-03",
+    "value": 41.00986111111111,
+    "z": -4.26310185185185,
+    "baseline_center": 53.79916666666666,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-04",
+    "value": 41.25930555555554,
+    "z": -4.1753240740740765,
+    "baseline_center": 53.78527777777777,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-05",
+    "value": 40.98430555555555,
+    "z": -4.198287037037038,
+    "baseline_center": 53.579166666666666,
+    "baseline_spread": 3.0
+   },
+   {
+    "day": "2026-08-06",
+    "value": 42.20611111111112,
+    "z": -3.7440046296296265,
+    "baseline_center": 53.438125,
+    "baseline_spread": 3.0
+   }
+  ],
+  "skin_temp_night": [
+   {
+    "day": "2026-07-08",
+    "value": 33.566470926561905,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-09",
+    "value": 33.56019040713376,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-10",
+    "value": 33.56486913169991,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-11",
+    "value": 33.55389870474235,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-12",
+    "value": 33.55132493146416,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-13",
+    "value": 33.55481009798773,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-14",
+    "value": 33.54477491583408,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-15",
+    "value": 33.57759642869561,
+    "z": 0.22786330707873503,
+    "baseline_center": 33.55481009798773,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-16",
+    "value": 33.558389377701275,
+    "z": 0.008891251405316325,
+    "baseline_center": 33.55750025256074,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-17",
+    "value": 33.56112502432299,
+    "z": 0.027356466217156594,
+    "baseline_center": 33.558389377701275,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-18",
+    "value": 33.57157533967815,
+    "z": 0.12285447260630633,
+    "baseline_center": 33.55928989241752,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-19",
+    "value": 33.54882509585693,
+    "z": -0.11365311276833268,
+    "baseline_center": 33.56019040713376,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-20",
+    "value": 33.55390250376412,
+    "z": -0.053873886533963855,
+    "baseline_center": 33.55928989241752,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-21",
+    "value": 33.56421229103338,
+    "z": 0.058229133321034965,
+    "baseline_center": 33.558389377701275,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-22",
+    "value": 33.564189711370375,
+    "z": 0.04899818952857515,
+    "baseline_center": 33.55928989241752,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-23",
+    "value": 33.56192220596136,
+    "z": 0.026323135438417467,
+    "baseline_center": 33.55928989241752,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-24",
+    "value": 33.550540396443054,
+    "z": -0.09216804569078363,
+    "baseline_center": 33.55975720101213,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-25",
+    "value": 33.55548697951483,
+    "z": -0.011127583296755006,
+    "baseline_center": 33.55659973784451,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-26",
+    "value": 33.5487236958206,
+    "z": -0.08214482787451516,
+    "baseline_center": 33.55693817860805,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-27",
+    "value": 33.56599706265855,
+    "z": 0.0905888405050348,
+    "baseline_center": 33.55693817860805,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-28",
+    "value": 33.55222586165155,
+    "z": -0.07531339360582479,
+    "baseline_center": 33.55975720101213,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-29",
+    "value": 33.55189340912393,
+    "z": -0.07863791888205185,
+    "baseline_center": 33.55975720101213,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-30",
+    "value": 33.5518098622378,
+    "z": -0.05128316370246466,
+    "baseline_center": 33.55693817860805,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-07-31",
+    "value": 33.554484996220864,
+    "z": -0.0020974541861562557,
+    "baseline_center": 33.55469474163948,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-01",
+    "value": 34.14675726813935,
+    "z": 5.925635181468607,
+    "baseline_center": 33.55419374999249,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-02",
+    "value": 34.14647361556993,
+    "z": 5.922798655774386,
+    "baseline_center": 33.55419374999249,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-03",
+    "value": 34.168525215499294,
+    "z": 6.13539227631442,
+    "baseline_center": 33.55498598786785,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-04",
+    "value": 34.14215287905081,
+    "z": 5.834482863127164,
+    "baseline_center": 33.558704592738096,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-05",
+    "value": 34.16500593425386,
+    "z": 6.06301341515767,
+    "baseline_center": 33.558704592738096,
+    "baseline_spread": 0.1
+   },
+   {
+    "day": "2026-08-06",
+    "value": 34.15990327395802,
+    "z": 6.011986812199268,
+    "baseline_center": 33.558704592738096,
+    "baseline_spread": 0.1
+   }
+  ],
+  "motion_total": [
+   {
+    "day": "2026-07-08",
+    "value": 157617.49999999997,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-09",
+    "value": 133360.30000000002,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-10",
+    "value": 129434.39999999997,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-11",
+    "value": 143936.5,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-12",
+    "value": 144822.70000000007,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-13",
+    "value": 154066.49999999997,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-14",
+    "value": 137078.19999999992,
+    "z": null,
+    "baseline_center": null,
+    "baseline_spread": null
+   },
+   {
+    "day": "2026-07-15",
+    "value": 152243.79999999984,
+    "z": 0.5531290312141984,
+    "baseline_center": 143936.5,
+    "baseline_spread": 15018.737999999956
+   },
+   {
+    "day": "2026-07-16",
+    "value": 159092.7,
+    "z": 1.1308521965295875,
+    "baseline_center": 144379.60000000003,
+    "baseline_spread": 13010.63042999981
+   },
+   {
+    "day": "2026-07-17",
+    "value": 141286.19999999992,
+    "z": -0.25804718523649395,
+    "baseline_center": 144822.70000000007,
+    "baseline_spread": 13704.857879999852
+   },
+   {
+    "day": "2026-07-18",
+    "value": 136592.69999999987,
+    "z": -0.5985028966809476,
+    "baseline_center": 144379.60000000003,
+    "baseline_spread": 13010.63042999981
+   },
+   {
+    "day": "2026-07-19",
+    "value": 142936.59999999998,
+    "z": -0.08118441736793856,
+    "baseline_center": 143936.5,
+    "baseline_spread": 12316.402979999766
+   },
+   {
+    "day": "2026-07-20",
+    "value": 144508.49999999997,
+    "z": 0.0923922752548927,
+    "baseline_center": 143436.55,
+    "baseline_spread": 11602.160429999982
+   },
+   {
+    "day": "2026-07-21",
+    "value": 132037.49999999997,
+    "z": -1.0928627613785615,
+    "baseline_center": 143936.5,
+    "baseline_spread": 10887.917880000197
+   },
+   {
+    "day": "2026-07-22",
+    "value": 151221.5000000001,
+    "z": 0.6709914112091028,
+    "baseline_center": 143436.55,
+    "baseline_spread": 11602.160429999982
+   },
+   {
+    "day": "2026-07-23",
+    "value": 146936.19999999992,
+    "z": 0.3227170494370266,
+    "baseline_center": 143436.55,
+    "baseline_spread": 10844.329440000163
+   },
+   {
+    "day": "2026-07-24",
+    "value": 140177.50000000012,
+    "z": -0.3858102595692261,
+    "baseline_center": 144222.5,
+    "baseline_spread": 10484.42829000012
+   },
+   {
+    "day": "2026-07-25",
+    "value": 148744.90000000002,
+    "z": 0.5523935187716367,
+    "baseline_center": 144222.5,
+    "baseline_spread": 8186.917199999978
+   },
+   {
+    "day": "2026-07-26",
+    "value": 149988.6000000001,
+    "z": 0.6501836857468245,
+    "baseline_center": 144665.60000000003,
+    "baseline_spread": 8186.917199999978
+   },
+   {
+    "day": "2026-07-27",
+    "value": 162231.49999999997,
+    "z": 2.016528272693422,
+    "baseline_center": 145722.34999999995,
+    "baseline_spread": 8186.917199999978
+   },
+   {
+    "day": "2026-07-28",
+    "value": 155463.29999999996,
+    "z": 1.189819044462797,
+    "baseline_center": 145722.34999999995,
+    "baseline_spread": 8186.917199999978
+   },
+   {
+    "day": "2026-07-29",
+    "value": 135464.70000000013,
+    "z": -1.4570043489292952,
+    "baseline_center": 147840.55,
+    "baseline_spread": 8494.037790000055
+   },
+   {
+    "day": "2026-07-30",
+    "value": 147014.8,
+    "z": 0.15786772583947034,
+    "baseline_center": 145722.34999999995,
+    "baseline_spread": 8186.917199999978
+   },
+   {
+    "day": "2026-07-31",
+    "value": 145082.1000000001,
+    "z": -0.08693098522536508,
+    "baseline_center": 145722.34999999995,
+    "baseline_spread": 7365.037890000121
+   },
+   {
+    "day": "2026-08-01",
+    "value": 152712.40000000002,
+    "z": 0.9837638293830199,
+    "baseline_center": 146009.15000000002,
+    "baseline_spread": 6813.881340000099
+   },
+   {
+    "day": "2026-08-02",
+    "value": 153897.40000000008,
+    "z": 1.1270522487950552,
+    "baseline_center": 146975.49999999994,
+    "baseline_spread": 6141.596370000082
+   },
+   {
+    "day": "2026-08-03",
+    "value": 139655.6,
+    "z": -1.3523277047807392,
+    "baseline_center": 147879.85,
+    "baseline_spread": 6081.551070000039
+   },
+   {
+    "day": "2026-08-04",
+    "value": 158003.39999999994,
+    "z": 1.2586503217664684,
+    "baseline_center": 147879.85,
+    "baseline_spread": 8043.179130000069
+   },
+   {
+    "day": "2026-08-05",
+    "value": 136514.0999999999,
+    "z": -1.9668062708670122,
+    "baseline_center": 149366.75000000006,
+    "baseline_spread": 6534.781889999991
+   },
+   {
+    "day": "2026-08-06",
+    "value": 140621.70000000007,
+    "z": -0.719881641922652,
+    "baseline_center": 147879.85,
+    "baseline_spread": 10082.421300000022
+   }
+  ]
+ }
+}
