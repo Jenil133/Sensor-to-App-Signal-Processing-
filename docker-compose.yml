@@ -7,5 +7,18 @@ services:
       POSTGRES_DB: baseline
     ports: ["5432:5432"]
     volumes: [pgdata:/var/lib/postgresql/data]
+  api:
+    build: ./server
+    env_file: ./server/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg://baseline:baseline@postgres:5432/baseline
+    depends_on: [postgres]
+    ports: ["8000:8000"]
+    volumes: [models_store:/app/models_store]
+  web:
+    build: ./web
+    depends_on: [api]
+    ports: ["8080:80"]
 volumes:
   pgdata:
+  models_store:
